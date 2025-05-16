@@ -1,3 +1,14 @@
+/*  ** Ejercicios ** 
+ 
+Base de Datos Sakila:
+
+Para este ejerccio utilizaremos la BBDD Sakila que hemos estado utilizando durante el repaso de SQL. Es 
+una base de datos de ejemplo que simula una tienda de alquiler de películas. Contiene tablas como film 
+(películas), actor (actores), customer (clientes), rental (alquileres), category (categorías), entre otras. 
+Estas tablas contienen información sobre películas, actores, clientes, alquileres y más, y se utilizan para 
+realizar consultas y análisis de datos en el contexto de una tienda de alquiler de películas.
+*/
+
 USE sakila;
 
 -- 1. Selecciona todos los nombres de las películas sin que aparezcan duplicados.
@@ -151,6 +162,8 @@ ORDER BY title;
 
 -- 23. Encuentra el nombre y apellido de los actores que no han actuado en ninguna película de la categoría "Horror". 
 -- Utiliza una subconsulta para encontrar los actores que han actuado en películas de la categoría "Horror" y luego exclúyelos de la lista de actores.
+
+-- Ejercicio mezclando JOIN y subconsultas
 SELECT CONCAT(last_name, ', ', first_name) Nombre_Actor_Antimiedo
 FROM actor
 WHERE actor_id NOT IN (
@@ -162,6 +175,7 @@ WHERE actor_id NOT IN (
 	WHERE c.name = 'Horror')
 ORDER BY nombre_actor_antimiedo;
 
+-- Ejercicio sólo con subconsultas
 SELECT CONCAT(last_name, ', ', first_name) Nombre_Actor_Antimiedo
 FROM actor
 WHERE actor_id NOT IN(
@@ -198,14 +212,3 @@ JOIN actor a1 ON fa1.actor_id = a1.actor_id
 JOIN actor a2 ON fa2.actor_id = a2.actor_id
 GROUP BY fa1.actor_id, fa2.actor_id
 ORDER BY Pelicula_Compartida;
-
-
-;
-SELECT * FROM customer;
-SELECT * FROM rental;
-SELECT * FROM inventory;
-SELECT * FROM film_category;
-SELECT * FROM category;
-SELECT * FROM film;
-SELECT * FROM film_actor;
-SELECT * FROM actor;
